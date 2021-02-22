@@ -1,0 +1,29 @@
+function enviarEmail(para, id, assunto, texto) {
+    console.log(para,id, assunto, texto);
+}
+
+class EnviarEmailParaUsuario {
+    send() {
+        enviarEmail("dani@gmail.com", 9899, "Ola!", "Tudo bem?")
+    }
+}
+
+Se caso o id precise ser uma string para ser enviado como requisição para
+o back-end, no caso do JavaScript daria erro, pois ele nao converte automatica
+mente
+
+
+
+Em TypeScript esse problema seria solucionado mais facilmente, pois ele é
+fortemente tipado:
+
+function enviarEmail(para: str, id: str, assunto: str, texto: str) {
+    console.log(para,id, assunto, texto);
+}
+
+Já Declaramos para o código que o id vai ser uma string, então ele converte
+automaticamente.
+
+Dependências instaladas: 
+express:
+- micro framework onde é possivel criar rotas, middlewares, 
