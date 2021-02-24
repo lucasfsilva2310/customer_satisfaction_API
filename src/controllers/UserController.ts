@@ -1,11 +1,13 @@
 import { Request, Response } from "express";
-import { getRepository } from "typeorm";
-import { User } from "../models/User";
+import { getCustomRepository } from "typeorm";
+import { UsersRepository } from "../repositories/UsersRepository";
+
+// ALT + SHIFT + O remove todos os imports nao utilizados!
 
 class UserController {
   async create(request: Request, response: Response) {
     const { name, email } = request.body;
-    const usersRepository = getRepository(User);
+    const usersRepository = getCustomRepository(UsersRepository);
 
     //verificar se o email ja existe no servidor
     // SELECT * FROM USERS WHERE EMAIL = "EMAIL"
@@ -14,7 +16,7 @@ class UserController {
     });
 
     if (userAlreadyExists) {
-      return response.send(400).json({
+      return response.status(400).json({
         error: "User already exists!",
       });
     }
@@ -28,7 +30,7 @@ class UserController {
 
     await usersRepository.save(user);
 
-    return response.send();
+    return response.status(201).json(user);
     //precisamos chamar esse body no server para testar
     // e precisamos das rotas
     // o body nao recebe só dados em JSON, portanto , nos precisamos informar ao server que vamos usar o formato JSON com o body

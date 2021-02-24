@@ -1,17 +1,19 @@
-import "reflect-metadata"; // importante sempre ser o primeiro a ser importado
-import express from "express";
-import "./database"; // não é necessario especificar o arquivo, por ser um index
+import { app } from "./app";
+//todos os codigos e comentarios estao 'apagados' pq todo o app foi passado para o 'app.ts' , para os testes serem efetuados
+// import "reflect-metadata; // importante sempre ser o primeiro a ser importado
+// import express from "express";
+// import "./database"; // não é necessario especificar o arquivo, por ser um index
 // para iniciar a aplicação é só dar um yarn dev
-import { router } from "./routes";
+// import { router } from "./routes";
 
-const app = express();
+// const app = express();
 
 //usando o express nós temos vários métodos, nesse caso, estamos usando o
 //listen pra saber se o servidor (nesse caso 3333) está rodando, estamos
 //"escutando" ele
 
-app.use(express.json()); // estamos informando ao server que queremos o formato JSON
-app.use(router); // importando e usando as rotas
+// app.use(express.json()); // estamos informando ao server que queremos o formato JSON
+// app.use(router); // importando e usando as rotas
 
 app.listen(3333, () => console.log("Server is running."));
 
